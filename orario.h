@@ -17,4 +17,4 @@ public:
 
 private:
     int sec;        
-}
+};
