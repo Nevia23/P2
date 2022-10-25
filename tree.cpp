@@ -56,7 +56,3 @@ private:
         }
     }
 };
-
-int main() {
-    Tree t1, t2;
-}
