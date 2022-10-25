@@ -14,12 +14,17 @@ private:
     int* a;
     unsigned int size;
     //vettore vuoto IFF a == nummptr && size == 0   (IFF = if and only if)
+    static int* copia 
 public:
 //blocchiamo la conversione da unsigned int => Vettore
     explicit Vettore(unsigned dim = 0, int v = 0): a(dim == 0 ? nullptr : new int[dim]), size(dim) {
         for(unsigned int k = 0; k < size; ++k) a[k] = v;
     }
-    Vettore(const Vettore& v);
+
+    Vettore(const Vettore& v): {
+        
+    }
+
     Vettore& operator=(const Vettore& v);
     ~Vettore();
 
@@ -56,3 +61,5 @@ std::ostream& operator<<(std::ostream& os, const Vettore& v) {
     for(unsigned int k = 0; k < v.getSize(); ++k) os << v[k] << ' ';
     return os;
 }
+
+//13:51 video
