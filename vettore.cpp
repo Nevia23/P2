@@ -35,4 +35,24 @@ public:
         //*this + v oppure this->operator+(v)
         *this = this->operator+(v); //assegnazione profonda
     }
+
+    bool operator==(const Vettore&v) const {
+        if(size != v.size) return false;
+        //size == v.size
+        for(unsigned int k = 0; k < size; ++k) if(a[k] != v.a[k]) return false;
+        return true;
+    }
+
+    int& operator[](unsigned int k) const {
+        return a[k]; //il controllo sull'accesso lo fa il chiamante
+    }
+
+    unsigned int getSize() const {
+        return size;
+    }
 };
+
+std::ostream& operator<<(std::ostream& os, const Vettore& v) {
+    for(unsigned int k = 0; k < v.getSize(); ++k) os << v[k] << ' ';
+    return os;
+}
