@@ -14,19 +14,36 @@ private:
     int* a;
     unsigned int size;
     //vettore vuoto IFF a == nummptr && size == 0   (IFF = if and only if)
-    static int* copia 
+    int* copia() const {
+        if(size == 0) return nullptr;
+        //vettore di invocazione e' non vuoto
+        int* b = new int[size];
+        for(unsigned int k = 0; k < size; ++k) b[k] = a[k];
+        return b;
+    }
+
 public:
 //blocchiamo la conversione da unsigned int => Vettore
     explicit Vettore(unsigned dim = 0, int v = 0): a(dim == 0 ? nullptr : new int[dim]), size(dim) {
         for(unsigned int k = 0; k < size; ++k) a[k] = v;
     }
 
-    Vettore(const Vettore& v): {
-        
+    Vettore(const Vettore& v): a(v.copia()), size(v.size) {
     }
 
-    Vettore& operator=(const Vettore& v);
-    ~Vettore();
+    Vettore& operator=(const Vettore& v) {
+        if(this != &v) {
+            delete[] a;
+            //delete size; è un grosso errore. Devo sovrascriverlo, non pulirlo
+            size = v.size;
+            a = v.copia();
+        } 
+        return *this;
+    }
+
+    ~Vettore() {
+        delete[] a;
+    }
 
     Vettore operator+(const Vettore& v) const {
         Vettore w(size + v.size);
@@ -62,4 +79,12 @@ std::ostream& operator<<(std::ostream& os, const Vettore& v) {
     return os;
 }
 
-//13:51 video
+int main() {
+    Vettore v1(4), v2(3, 2), v3(5, -3);
+    v1 = v2 + v3;
+    v2.append(v2);
+    v3.append(v1).append(v3);
+    std::cout << v1 << std::endl;
+    std::cout << v2 << std::endl;
+    std::cout << v3 << std::endl;    
+}
