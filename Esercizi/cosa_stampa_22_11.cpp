@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
 
+int main(){
+
 class A {
 private:
   void h() {cout<<" A::h ";}
@@ -38,3 +40,4 @@ a->k(); // B::k B::g B::h (B::m B::g B::h)
 ((b->n())->n())->g(); // B::n B::n B::g 
 (a->n())->g(); // A::n B::g 
 (a->n())->m(); // A::n (A::m B::g A::h)
+}
