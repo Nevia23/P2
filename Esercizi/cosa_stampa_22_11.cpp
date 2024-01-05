@@ -1,10 +1,8 @@
 #include<iostream>
 using namespace std;
 
-int main(){
-
 class A {
-protected:
+private:
   void h() {cout<<" A::h ";}
 public:
   virtual void g() {cout <<" A::g ";}
@@ -15,7 +13,7 @@ public:
 };
 
 class B: public A {
-protected:
+private:
   void h() {cout <<" B::h ";}
 public:
   virtual void g() {cout <<" B::g ";}
@@ -23,6 +21,8 @@ public:
   void k() {cout <<" B::k "; g(); h(); m();}
   B* n() {cout <<" B::n "; return this;}
 };
+
+int main(){
 
 B* b = new B(); A* a = new B();
 
