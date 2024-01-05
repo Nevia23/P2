@@ -8,6 +8,7 @@ distruzione profonda.
 */
 
 #include<iostream>
+using namespace std;
 
 class Vettore {
 private:
