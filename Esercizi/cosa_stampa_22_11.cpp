@@ -4,7 +4,7 @@ using namespace std;
 int main(){
 
 class A {
-private:
+protected:
   void h() {cout<<" A::h ";}
 public:
   virtual void g() {cout <<" A::g ";}
