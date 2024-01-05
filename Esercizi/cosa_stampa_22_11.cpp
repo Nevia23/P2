@@ -15,7 +15,7 @@ public:
 };
 
 class B: public A {
-private:
+protected:
   void h() {cout <<" B::h ";}
 public:
   virtual void g() {cout <<" B::g ";}
