@@ -40,11 +40,11 @@ std::vector<QWidget> fun(const std::vector<QPaintDevice*>& v)  {
     if(*cit != nullptr) {   //check comune per tutti i puntatori
       Qwidget* p = dynamic_cast<QWidget*>(*cit);
       if(p != nullptr && p->height() <= 50 && p->width() <=50 &&
-	 p->hasFocus()) p->clearFocus(); 
+  p->hasFocus()) p->clearFocus(); 
       if(dynamic_cast<QAbstractButton*>(*cit))
-	static_cast<QAbstractButton*>(*cit)->setText("Pulsante");
+  static_cast<QAbstractButton*>(*cit)->setText("Pulsante");
       if(p && !dynamic_cast<QAbstractButton*>(*cit))
-	w.pushback(*p);
+  w.pushback(*p);
     }
     return w;
   }
