@@ -51,12 +51,12 @@ standard tutti i pulsanti clickabili contenuti nella Gui g aventi etichetta dive
   
 class Widget {
 private:
-  unsigned int w,h;
-  bool isVisible;
+  unsigned int w,h;  //i pixel sono unsigned int
+  bool isVisible;  //essere visibile o meno
 public:
-  virtual void setStandardSize() =0;
+  virtual void setStandardSize() =0; //metodo virtuale PURO, non costante
   Widget(unsigned int _w =0, unsigned int _h = 0, bool v =true): w(_w), h(_h), isVisible(v) {}
-  virtual ~Widget() =default;
+  virtual ~Widget() =default;  //mai dimenticare il distruttore virtuale
   void setSize(unsigned int _w =0, unsigned int _h =0) {w=_w; h=_h;} 
 };
 
@@ -66,6 +66,7 @@ private:
 public:
   AbstractButton(unsigned int _w =0, unsigned int _h = 0, bool v =true, std::string s = ""):
     Widget(_w,_h,v), label(s) {}
+  //non serve definire il distruttore perché definito virtuale nella base, tutti i distruttori della gerarchia radicata in Widget saranno automaticamente virtuali.
   std::string getLabel() const {return label;}
 };
 
